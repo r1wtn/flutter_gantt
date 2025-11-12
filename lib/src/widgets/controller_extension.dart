@@ -1,5 +1,6 @@
 // controller_extension.dart
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../flutter_gantt.dart';
 import '../utils/datetime.dart';
@@ -37,24 +38,10 @@ extension GanttCtrlInternal on GanttController {
     return result;
   }
 
-  /// Gets the English month name for 1-based month index.
+  /// Gets the localized month name for 1-based month index.
   static String _monthName(int month) {
-    const monthNames = [
-      '',
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-    return monthNames[month];
+    final date = DateTime(2000, month, 1);
+    return DateFormat.MMMM().format(date);
   }
 
   /// The number of days currently visible in the chart.
